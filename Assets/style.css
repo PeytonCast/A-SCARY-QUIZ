@@ -1,0 +1,136 @@
+:root{
+    --white: #fff;
+    --black: #1c2b2d;
+    --background: grey;
+    --danger-red:rgb(160, 51, 51);
+}
+*{margin: 0;
+padding: 0;
+box-sizing: border-box;}
+html{font-size: 10px;}
+body{font-family: sans-serif;
+background-color: var(--background);}
+.container{
+    max-width: 900px;
+    margin:0 auto;
+    padding: o 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 16px;
+}
+.quiz-box{
+    width: 600px;
+    margin:0 auto;
+    background-color: #eee;
+    padding: 1rem 5rem 5rem 5rem;
+    border: 3px solid var(--black);
+    border-radius: 5px;
+}
+.quiz-box h1 {
+    font-size: 3rem;
+    background-color:var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 3px;
+
+}
+
+.quiz-box #progress {
+    color:var(--black);
+    font-size:18px;
+    font-weight: 800;
+}
+.quiz-box #countdown {
+    color:var(--white);
+    background-color: var(--danger-red);
+    font-size:18px;
+    border-radius: 3px;
+    font-weight: 800;
+    padding: 6px;
+    margin: 1px;
+    
+}
+.quiz-header{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.quiz-box #question {
+    color:var(--danger-red);
+    font-size:18px;
+    font-weight: 600;
+    
+}
+.btn {
+    text-align: left;
+    background-color: rgb(197, 191, 191);
+    color: var(--black);
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    margin: 6px 0;
+    padding: 1rem;
+    outline: none;
+}
+.start{
+    text-align: center;
+    background-color: rgb(197, 191, 191);
+    color: var(--black);
+    font-size: 21px;
+    width: 100%;
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    margin: 6px 0;
+    padding: 1rem;
+    outline: none;
+}
+.start:hover{
+    cursor:pointer;
+    background-color: var(--danger-red);
+    color: var(--white);}
+
+.start:active{
+    cursor:pointer;
+    background-color: var(--background);
+    color: var(--white);}
+a{  color: var(--black);
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor:pointer;
+    background-color: var(--danger-red);
+    color: var(--white);
+}
+.btn:active {
+    cursor:pointer;
+    background-color: var(--background);
+    color: var(--white);
+}
+
+#score{
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 3 rem;
+    font-size: 17px;
+}
+.repeat a{
+    font-size: 18px;
+    color: var(--white);
+    background-color: var(--danger-red);
+    font-weight: 600;
+    padding: 1rem;
+
+}
+.repeat a:hover{
+    background-color:var(--background);
+}
+footer p {
+    font-size: 11px;
+}
