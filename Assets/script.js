@@ -8,7 +8,7 @@ var countdown = document.getElementById('countdown')
 var progress = document.getElementById('progress')
 var question = document.getElementById('question')
 var result = document.getElementById('result')
-
+var storeName = document.getElementById('storeName')
 //DONEwe will need a landing page with a start button
 //DONEwhen the start button is pressed the start button will be disabled or disapear
 //DONEand start the quiz
@@ -19,11 +19,12 @@ function setTime() {
       secondsLeft--;
       countdown.textContent = secondsLeft ;
   
-      if(secondsLeft === 0) {
+      if(secondsLeft < 0) {
         clearInterval(timerInterval)
-        alert('Times up!')
+        open('index3.html')
+    
 
-    return false;
+    
       } }, 1000);}
 
   setTime()
@@ -55,30 +56,32 @@ function question1() {
     spanChoiceC.textContent = 'Application Packing Intellegence'
     spanChoiceD.textContent = 'Artifical Progaming Intellagence'
 
-    btn1.addEventListener('click', e=>{nope(false)})
-    btn2.addEventListener('click', e=>{correctq1(true)})
-    btn3.addEventListener('click', e=>{nope(false)})
-    btn4.addEventListener('click', e=>{nope(false)})
+    btn1.addEventListener('click', e=>{nopeQ1(false)})
+    btn2.addEventListener('click', e=>{correctQ1(true)})
+    btn3.addEventListener('click', e=>{nopeQ1(false)})
+    btn4.addEventListener('click', e=>{nopeQ1(false)})
 
     //correct function question 1
-function correctq1() {
+function correctQ1() {
 
     result.style.color = 'green'
     result.textContent = 'Correct!';
     setTimeout(() => {  result.textContent = ''; }, 3000);
     clear()
     question2();
+    localStorage.setItem("correctQ1", true)
     return;
     
 }
 //function if the user pickes the wrong answer question 1
-function nope() { 
+function nopeQ1() { 
     result.style.color = 'rgb(160, 51, 51)'
     result.textContent = ' Wrong -20s to the clock. Answer was B. Application Programing Innerface';
     setTimeout(() => {  result.textContent = ''; }, 3000);
     secondsLeft = secondsLeft -20
     clear()
     question2();
+    localStorage.setItem("nopeQ1", false)
     return;
     
     }
@@ -88,8 +91,8 @@ function nope() {
 //the second question question 2
 
   function question2() {
-    var quest2 = 'What is local storage?'
-    question.textContent = quest2
+   
+    question.textContent = 'What is local storage?'
     //progress
     progress.textContent = 'Question 2 of 3'
     spanChoiceA.textContent = 'something'
@@ -99,25 +102,24 @@ function nope() {
    
    
     // option
-    btn1.addEventListener('click', e=>{nope(false), e.stopPropagation()})
-    btn2.addEventListener('click', e=>{nope(false), e.stopPropagation()})
-    btn3.addEventListener('click', e=>{nope(false), e.stopPropagation()})
-    btn4.addEventListener('click', e=>{correct(true), e.stopPropagation()})
+    btn1.addEventListener('click', e=>{nope2(false)})
+    btn2.addEventListener('click', e=>{nope2(false)})
+    btn3.addEventListener('click', e=>{nope2(false)})
+    btn4.addEventListener('click', e=>{correct2(true)})
     //function if the user pickes a correct answer question 2
-    function correct() {
+    function correct2() {
         result.style.color = 'green'
         result.textContent = 'Correct!';
-        setTimeout(() => {  result.textContent = ''; }, 3000);
+      secondsLeft = secondsLeft+20
         clear()
         question3();
         return;
         
     }
     //function if the user pickes a incorrect answer question 2
-    function nope() { 
+    function nope2() { 
         result.style.color = 'rgb(160, 51, 51)'
-        result.textContent = ' Wrong -20s to the clock. Answer was B. Application Programing Innerface';
-        setTimeout(() => {  result.textContent = ''; }, 3000);
+        result.textContent = ' Wrong -20s to the clock. Answer was D';
         clear()
         question3();
         return;
@@ -131,8 +133,8 @@ function nope() {
 //the second question question 
 
 function question3() {
-    var quest2 = 'What does DOM stand for?'
-    question.textContent = quest2
+    
+    question.textContent = 'What does DOM stand for?'
     //progress
     progress.textContent = 'Question 3 of 3'
     spanChoiceA.textContent = 'something'
@@ -142,28 +144,26 @@ function question3() {
    
    
     // option
-    btn1.addEventListener('click', e=>{correct(true), e.stopPropagation()})
-    btn2.addEventListener('click', e=>{nope(false), e.stopPropagation()})
-    btn3.addEventListener('click', e=>{nope(false), e.stopPropagation()})
-    btn4.addEventListener('click', e=>{nope(false), e.stopPropagation()})
+    btn1.addEventListener('click', e=>{correct3()})
+    btn2.addEventListener('click', e=>{nope3()})
+    btn3.addEventListener('click', e=>{nope3()})
+    btn4.addEventListener('click', e=>{nope3()})
     //function if the user pickes a correct answer question 3
-    function correct() {
-        
+    function correct3() {
         result.style.color = 'green'
         result.textContent = 'Correct!';
-        setTimeout(() => {  result.textContent = ''; }, 3000);
+        secondsLeft = secondsLeft+20
         clear()
-        setTime = 0
-        
+        secondsLeft = 0
+        return true;
     }
     //function if the user pickes a incorrect answer question 3
-    function nope() { 
+    function nope3() { 
         result.style.color = 'rgb(160, 51, 51)'
-        result.textContent = ' Wrong -20s to the clock. Answer was B. Application Programing Innerface';
-        setTimeout(() => {  result.textContent = ''; }, 3000);
+        result.textContent = ' Wrong -20s to the clock. Answer was A.';
         clear()
-        setTime = 0
-        
+        secondsLeft = 0
+        return false;
         }  
     return
   }
