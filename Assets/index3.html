@@ -10,21 +10,23 @@
     <div class="quiz-box">
     <section>
     <h1>Your Score</h1>
-    
-        <label class="name" for="name">your name:</label>
-        <input type="text" id ='storeName'class="name" ><br><br>
+    <div class= "score" id="me"></div>
+      <form>
+        <label id="nameLabel">Input name:</label>
+        <input type="text" id ='inputName'class="name" >
         <input type="submit" value="Submit" class=" start">
       </form>
     <h2 id="personal"></h2>
+    
     </section>
     <article>
         <h1>How others did...</h1>
-        <h2 id="others"></h2>
+        <ul id="others"></ul>
         <a href="index2.html" >
             <input class="start" type="button" value="replay quiz">
         </a>
     </article>
     </div>
   </body>
-  <script src="script.js"></script>
+  <script src="score.js"></script>
 </html>
