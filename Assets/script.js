@@ -9,6 +9,7 @@ var progress = document.getElementById('progress')
 var question = document.getElementById('question')
 var result = document.getElementById('result')
 var storeName = document.getElementById('storeName')
+var score = (0)
 //DONEwe will need a landing page with a start button
 //DONEwhen the start button is pressed the start button will be disabled or disapear
 //DONEand start the quiz
@@ -46,8 +47,8 @@ function clear () {
 }
 //question 1
 function question1() {
-    var quest1 = 'What does API stand for?'
-    question.textContent = quest1
+    
+    question.textContent = 'What does API stand for?'
     //progress
     progress.textContent = 'Question 1 of 3'
 
@@ -66,10 +67,9 @@ function correctQ1() {
 
     result.style.color = 'green'
     result.textContent = 'Correct!';
-    setTimeout(() => {  result.textContent = ''; }, 3000);
     clear()
     question2();
-    localStorage.setItem("correctQ1", true)
+    localStorage.setItem('value1' , score++, score++)
     return;
     
 }
@@ -77,11 +77,10 @@ function correctQ1() {
 function nopeQ1() { 
     result.style.color = 'rgb(160, 51, 51)'
     result.textContent = ' Wrong -20s to the clock. Answer was B. Application Programing Innerface';
-    setTimeout(() => {  result.textContent = ''; }, 3000);
     secondsLeft = secondsLeft -20
     clear()
     question2();
-    localStorage.setItem("nopeQ1", false)
+   
     return;
     
     }
@@ -111,7 +110,8 @@ function nopeQ1() {
         result.style.color = 'green'
         result.textContent = 'Correct!';
       secondsLeft = secondsLeft+20
-        clear()
+      localStorage.setItem('value2' , score++)
+      clear()
         question3();
         return;
         
@@ -153,8 +153,12 @@ function question3() {
         result.style.color = 'green'
         result.textContent = 'Correct!';
         secondsLeft = secondsLeft+20
+        localStorage.setItem('value3' , score++)
+
         clear()
         secondsLeft = 0
+        console.log(score)
+
         return true;
     }
     //function if the user pickes a incorrect answer question 3
@@ -163,11 +167,22 @@ function question3() {
         result.textContent = ' Wrong -20s to the clock. Answer was A.';
         clear()
         secondsLeft = 0
+        console.log(score)
+
         return false;
         }  
     return
   }
+
+ 
+
+
 question1()
+
+
+
+
+
 //next to the timer there will be a queston i will need the question to remove itself and the display the next question
 //there will be a frationated progress counter that will display the users progress exp 1 of 3
 
