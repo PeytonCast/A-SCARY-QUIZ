@@ -78,7 +78,36 @@ background-color: var(--background);}
     padding: 1rem;
     outline: none;
 }
+.name {
+
+    text-align: left;
+    background-color: rgb(197, 191, 191);
+    color: var(--black);
+    font-size: 18px;
+    width: 100%;
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    margin: 6px 0px;
+    margin-top: 1rem;
+    padding: 1rem;
+    outline: none;
+}
+#nameLabel {
+    font-size: 18px;
+}
 .start{
+    text-align: center;
+    background-color: rgb(197, 191, 191);
+    color: var(--black);
+    font-size: 21px;
+    width: 100%;
+    border: 1px solid var(--black);
+    border-radius: 4px;
+    margin: 6px 0;
+    padding: 1rem;
+    outline: none;
+}
+.score{
     text-align: center;
     background-color: rgb(197, 191, 191);
     color: var(--black);
