@@ -60,7 +60,7 @@ function question1() {
 
     //correct function question 1
 function correctQ1() {
-
+    setTimeout(() => {  result.textContent = ''; }, 3000);
     score = 1
     result.style.color = 'green'
     result.textContent = 'Correct!';
@@ -71,8 +71,9 @@ function correctQ1() {
     
 }
 //function if the user pickes the wrong answer question 1
-function nopeQ1() { 
-    
+function nopeQ1() {
+     
+    setTimeout(() => {  result.textContent = ''; }, 3000);
     result.style.color = 'rgb(160, 51, 51)'
     result.textContent = ' Wrong';
     secondsLeft = secondsLeft -20
@@ -105,6 +106,7 @@ function nopeQ1() {
     btn4.addEventListener('click', correct2)
     //function if the user pickes a correct answer question 2
     function correct2() {
+    setTimeout(() => {  result.textContent = ''; }, 3000);
     if (score == 0){ score = 1 }else
     if (score == 1) { score = 2}
         result.style.color = 'green'
@@ -118,7 +120,7 @@ function nopeQ1() {
     }
     //function if the user pickes a incorrect answer question 2
     function nope2() { 
-        
+        setTimeout(() => {  result.textContent = ''; }, 3000);
         result.style.color = 'rgb(160, 51, 51)'
         result.textContent = ' Wrong';
         clear()
@@ -153,8 +155,8 @@ function question3() {
     function correct3() {
         if (score == 0) {score = 1 } else
         if (score == 1) {score = 2  }else 
-        if (score == 2) {score = 3
-}
+        if (score == 2) {score = 3}
+        setTimeout(() => {  result.textContent = ''; }, 3000);
         result.style.color = 'green'
         result.textContent = 'Correct!';
         secondsLeft = secondsLeft+20
@@ -168,6 +170,7 @@ function question3() {
     }
     //function if the user pickes a incorrect answer question 3
     function nope3() { 
+        setTimeout(() => {  result.textContent = ''; }, 3000);
         if (score == 0) {
         localStorage.setItem('value', 0)}
         result.style.color = 'rgb(160, 51, 51)'
@@ -184,8 +187,4 @@ function question3() {
 
 
 question1()
-
-
-
-
 
