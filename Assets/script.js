@@ -1,4 +1,4 @@
-//DONEok so we will need var that are set to the id and classes of the HTML
+
 var spanChoiceA = document.getElementById("choice1")
 var spanChoiceB = document.getElementById("choice2")
 var spanChoiceC = document.getElementById("choice3")
@@ -10,9 +10,7 @@ var question = document.getElementById('question')
 var result = document.getElementById('result')
 var storeName = document.getElementById('storeName')
 var score = (0)
-//DONEwe will need a landing page with a start button
-//DONEwhen the start button is pressed the start button will be disabled or disapear
-//DONEand start the quiz
+//sets the timer
 var secondsLeft = 120
 function setTime() {
     
@@ -31,20 +29,18 @@ function setTime() {
   setTime()
 
  
-//DONEwhen the start button is pressed the TIMER will start
-//DONEthe timer will need to be 2 min long
-//i will need an array of 
-//IF the user gets a queston wrong 
-//THEN the timer will decrease by 30 sec
+//clears the way for the next question
 function clear () {
-    progress.textContent = ''
-    spanChoiceA.textContent = ''
-    spanChoiceB.textContent = ''
-    spanChoiceC.textContent = ''
-    spanChoiceD.textContent = ''
-    spanChoiceB.style.color = ''
+   progress.textContent = ''
+   spanChoiceA.textContent = ''
+   spanChoiceB.textContent = ''
+   spanChoiceC.textContent = ''
+   spanChoiceD.textContent = ''
+   spanChoiceB.style.color = ''
     
 }
+//if this is a rerun we dont want the past in the present
+localStorage.removeItem('value')
 //question 1
 function question1() {
     
@@ -57,26 +53,28 @@ function question1() {
     spanChoiceC.textContent = 'Application Packing Intellegence'
     spanChoiceD.textContent = 'Artifical Progaming Intellagence'
 
-    btn1.addEventListener('click', e=>{nopeQ1(false)})
-    btn2.addEventListener('click', e=>{correctQ1(true)})
-    btn3.addEventListener('click', e=>{nopeQ1(false)})
-    btn4.addEventListener('click', e=>{nopeQ1(false)})
+    btn1.addEventListener('click', nopeQ1)
+    btn2.addEventListener('click', correctQ1)
+    btn3.addEventListener('click', nopeQ1)
+    btn4.addEventListener('click', nopeQ1)
 
     //correct function question 1
 function correctQ1() {
 
+    score = 1
     result.style.color = 'green'
     result.textContent = 'Correct!';
+    localStorage.setItem('value', score)
     clear()
     question2();
-    localStorage.setItem('value1' , score++, score++)
     return;
     
 }
 //function if the user pickes the wrong answer question 1
 function nopeQ1() { 
+    
     result.style.color = 'rgb(160, 51, 51)'
-    result.textContent = ' Wrong -20s to the clock. Answer was B. Application Programing Innerface';
+    result.textContent = ' Wrong';
     secondsLeft = secondsLeft -20
     clear()
     question2();
@@ -90,27 +88,29 @@ function nopeQ1() {
 //the second question question 2
 
   function question2() {
-   
+    
     question.textContent = 'What is local storage?'
     //progress
     progress.textContent = 'Question 2 of 3'
-    spanChoiceA.textContent = 'something'
-    spanChoiceB.textContent = 'something'
-    spanChoiceC.textContent = 'something'
-    spanChoiceD.textContent = 'something'
+    spanChoiceA.textContent = 'a type of box'
+    spanChoiceB.textContent = 'Your atic'
+    spanChoiceC.textContent = 'A storage company'
+    spanChoiceD.textContent = 'Storage on the browser'
    
    
     // option
-    btn1.addEventListener('click', e=>{nope2(false)})
-    btn2.addEventListener('click', e=>{nope2(false)})
-    btn3.addEventListener('click', e=>{nope2(false)})
-    btn4.addEventListener('click', e=>{correct2(true)})
+    btn1.addEventListener('click', nope2)
+    btn2.addEventListener('click', nope2)
+    btn3.addEventListener('click', nope2)
+    btn4.addEventListener('click', correct2)
     //function if the user pickes a correct answer question 2
     function correct2() {
+    if (score == 0){ score = 1 }else
+    if (score == 1) { score = 2}
         result.style.color = 'green'
-        result.textContent = 'Correct!';
+      result.textContent = 'Correct!';
       secondsLeft = secondsLeft+20
-      localStorage.setItem('value2' , score++)
+      localStorage.setItem('value', score)
       clear()
         question3();
         return;
@@ -118,8 +118,9 @@ function nopeQ1() {
     }
     //function if the user pickes a incorrect answer question 2
     function nope2() { 
+        
         result.style.color = 'rgb(160, 51, 51)'
-        result.textContent = ' Wrong -20s to the clock. Answer was D';
+        result.textContent = ' Wrong';
         clear()
         question3();
         return;
@@ -137,23 +138,27 @@ function question3() {
     question.textContent = 'What does DOM stand for?'
     //progress
     progress.textContent = 'Question 3 of 3'
-    spanChoiceA.textContent = 'something'
-    spanChoiceB.textContent = 'something'
-    spanChoiceC.textContent = 'something'
-    spanChoiceD.textContent = 'something'
+    spanChoiceA.textContent = 'Document Object Model'
+    spanChoiceB.textContent = 'Document Object Maker'
+    spanChoiceC.textContent = 'Dollop Of Mystery'
+    spanChoiceD.textContent = 'Dab Over Mistakes'
    
    
     // option
-    btn1.addEventListener('click', e=>{correct3()})
-    btn2.addEventListener('click', e=>{nope3()})
-    btn3.addEventListener('click', e=>{nope3()})
-    btn4.addEventListener('click', e=>{nope3()})
+    btn1.addEventListener('click', correct3)
+    btn2.addEventListener('click', nope3)
+    btn3.addEventListener('click', nope3)
+    btn4.addEventListener('click', nope3)
     //function if the user pickes a correct answer question 3
     function correct3() {
+        if (score == 0) {score = 1 } else
+        if (score == 1) {score = 2  }else 
+        if (score == 2) {score = 3
+}
         result.style.color = 'green'
         result.textContent = 'Correct!';
         secondsLeft = secondsLeft+20
-        localStorage.setItem('value3' , score++)
+        localStorage.setItem('value', score)
 
         clear()
         secondsLeft = 0
@@ -163,11 +168,12 @@ function question3() {
     }
     //function if the user pickes a incorrect answer question 3
     function nope3() { 
+        if (score == 0) {
+        localStorage.setItem('value', 0)}
         result.style.color = 'rgb(160, 51, 51)'
-        result.textContent = ' Wrong -20s to the clock. Answer was A.';
+        result.textContent = ' Wrong';
         clear()
         secondsLeft = 0
-        console.log(score)
 
         return false;
         }  
@@ -183,10 +189,3 @@ question1()
 
 
 
-//next to the timer there will be a queston i will need the question to remove itself and the display the next question
-//there will be a frationated progress counter that will display the users progress exp 1 of 3
-
-//when the user is finished the user will be given a score 
-//the user can then SAVE the score and his or her name in local storage
-//if one of the 2 values are empty then alert them that the user must fill the name 
-//then the user will be given a requiz button that will restart the quiz 
